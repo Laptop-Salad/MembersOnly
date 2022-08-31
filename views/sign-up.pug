@@ -1,0 +1,10 @@
+extends layout 
+
+block content
+    div(class="w-100 h-100 d-flex justify-content-center align-items-center")
+        div(class="w-25 h-50 bg-light rounded-1 d-flex flex-column align-items-center")
+            h1 Sign Up Today!
+            form(method="POST" action="/sign-up" class="d-flex flex-column align-items-center")
+                input(class="m-4 rounded-1 border-0" name='username' type='text' placeholder='Username' required)
+                input(class="m-1 rounded-1 border-0" name='password' type='password' placeholder='Password' required)
+                input(class="m-1 rounded-1 border-0" name='submit' type='submit' value='Create new account')

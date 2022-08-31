@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+    if user
+      div(class="p-2 d-flex bg-white align-items-center rounded-1" style="text-decoration: none") 
+        h2 Hello, !{user.username}
+        a(style="text-decoration: none" class="ms-4 text-dark" href="/log-out") Logout
+        a(style="text-decoration: none" class=" ms-2 text-dark" href="/new-post") Post a new message
+      if messages
+        each message in messages 
+          div(class="d-flex justify-content-center")
+            div(class="bg-white w-75 m-2 p-1 rounded-1") 
+              h2 !{message.title}
+              p !{message.text}
+              p(class="text-info") @!{message.sender} !{message.upvotes - message.downvotes} votes
+
+              div(class="d-flex")
+                form(action="/chat/upvote" method="POST" class="m-1")
+                  button(name="upvote" value=message._id class="bg-success")
+                
+                form(action="/chat/downvote" method="POST" class="m-1")
+                  button(name="downvote" value=message._id class="bg-danger")
+
+
+    else 
+        h1(class="text-light") Please log in to chat

@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  h1(class="text-light")= message
+  h2(class="text-light")= error.status
+  pre(class="text-light") #{error.stack}
